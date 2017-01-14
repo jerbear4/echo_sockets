@@ -47,7 +47,7 @@ def server(log_buffer=sys.stderr):
                     #       a placeholder to prevent an error in string
                     #       formatting
                     data = conn.recv(16)
-                    print('received "{0}"'.format(data.decode('utf8')))
+                    print('received "{0}"'.format(data.decode('utf8')), file=log_buffer)
                     # TODO: Send the data you received back to the client, log
                     # the fact using the print statement here.  It will help in
                     # debugging problems.
@@ -57,7 +57,8 @@ def server(log_buffer=sys.stderr):
                     if data:
                         conn.sendall(data)
                     else:
-                        print(msg, log_buffer)
+                        message = 'End of buffer'
+                        print(message, log_buffer)
                         break
             finally:
                 # TODO: When the inner loop exits, this 'finally' clause will
