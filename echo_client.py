@@ -35,7 +35,7 @@ def client(msg, log_buffer=sys.stderr):
             if len(chunk) < buffersize:
                 done = True
             serv_reply += chunk.decode('utf8')
-        print('received "{0}"'.format(chunk.decode('utf8')), file=log_buffer)
+        print('received "{0}"'.format(serv_reply), file=log_buffer)
     finally:
         # TODO: after you break out of the loop receiving echoed chunks from
         #       the server you will want to close your client socket.
